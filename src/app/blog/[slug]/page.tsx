@@ -8,6 +8,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import type { Metadata } from 'next'
+import { StructuredData } from '@/components/StructuredData'
 
 interface PageProps {
   params: Promise<{
@@ -60,6 +61,14 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <StructuredData
+        type="article"
+        title={post.title}
+        description={post.summary}
+        image={post.cover}
+        datePublished={post.published}
+        dateModified={post.published}
+      />
       <Navigation />
       <main className="flex-1 pt-24 py-20 px-4">
         <article className="container max-w-4xl mx-auto">
