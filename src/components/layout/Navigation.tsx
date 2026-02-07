@@ -32,7 +32,7 @@ export function Navigation() {
       return (
         <button
           onClick={() => scrollToSection(sectionId)}
-          className="text-sm text-muted-foreground hover:text-foreground transition-all whitespace-nowrap px-2 py-1 rounded-lg hover:bg-white/5"
+          className="text-sm text-muted-foreground hover:text-foreground transition-all whitespace-nowrap px-2 py-1 rounded-lg hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           {children}
         </button>
@@ -58,7 +58,7 @@ export function Navigation() {
             {mounted && (
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-3 rounded-full bg-background/60 backdrop-blur-xl border border-white/10 hover:bg-background/80 hover:border-white/20 transition-all shadow-lg shadow-black/5"
+                className="p-3 rounded-full bg-background/60 backdrop-blur-xl border border-white/10 hover:bg-background/80 hover:border-white/20 transition-all shadow-lg shadow-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? (
@@ -88,7 +88,7 @@ export function Navigation() {
             <div className="flex items-center gap-1 bg-background/60 backdrop-blur-xl rounded-[16px] p-1 border border-white/10 shadow-lg shadow-black/5">
               <button
                 onClick={() => setLocale('en')}
-                className={`px-3 py-1.5 text-sm rounded-[12px] transition-all ${
+                className={`px-3 py-1.5 text-sm rounded-[12px] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                   locale === 'en'
                     ? 'bg-white/10 text-foreground shadow-sm'
                     : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
@@ -98,7 +98,7 @@ export function Navigation() {
               </button>
               <button
                 onClick={() => setLocale('es')}
-                className={`px-3 py-1.5 text-sm rounded-[12px] transition-all ${
+                className={`px-3 py-1.5 text-sm rounded-[12px] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                   locale === 'es'
                     ? 'bg-white/10 text-foreground shadow-sm'
                     : 'text-muted-foreground hover:text-foreground hover:bg-white/5'

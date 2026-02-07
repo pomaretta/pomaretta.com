@@ -23,10 +23,9 @@ export function StructuredData({
     '@context': 'https://schema.org',
   }
 
-  let structuredData
-
-  if (type === 'website') {
-    structuredData = {
+  const structuredData = (() => {
+    if (type === 'website') {
+      return {
       ...baseData,
       '@type': 'WebSite',
       name: siteConfig.name,
@@ -50,11 +49,10 @@ export function StructuredData({
       inLanguage: ['en-US', 'es-ES'],
     }
   } else if (type === 'person') {
-    structuredData = {
+    return {
       ...baseData,
       '@type': 'Person',
       name: siteConfig.author.name,
-      email: siteConfig.author.email,
       url: siteConfig.url,
       image: image || `${siteConfig.url}/og-image.png`,
       sameAs: [
@@ -82,7 +80,7 @@ export function StructuredData({
       ],
     }
   } else if (type === 'article') {
-    structuredData = {
+    return {
       ...baseData,
       '@type': 'BlogPosting',
       headline: title || siteConfig.name,
@@ -107,12 +105,25 @@ export function StructuredData({
         '@id': siteConfig.url,
       },
     }
+  } else {
+    return null
   }
+})()
+
+  if (!structuredData) {
+    return null
+  }
+
+  // Escape dangerous characters to prevent script injection
+  const jsonLd = JSON.stringify(structuredData)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      dangerouslySetInnerHTML={{ __html: jsonLd }}
     />
   )
 }

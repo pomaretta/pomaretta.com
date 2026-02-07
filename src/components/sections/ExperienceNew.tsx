@@ -1,5 +1,6 @@
 'use client'
 
+import { useMemo } from 'react'
 import { FadeInUp } from '@/components/animations/FadeInUp'
 import { getLocalizedExperiences } from '@/data/experience-detailed'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
@@ -7,7 +8,7 @@ import { Briefcase } from 'lucide-react'
 
 export function ExperienceNew() {
   const { t, locale } = useLanguage()
-  const experiences = getLocalizedExperiences(locale)
+  const experiences = useMemo(() => getLocalizedExperiences(locale), [locale])
 
   const formatDate = (dateStr: string) => {
     const [year, month] = dateStr.split('-')
