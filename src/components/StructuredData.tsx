@@ -35,7 +35,6 @@ export function StructuredData({
       author: {
         '@type': 'Person',
         name: siteConfig.author.name,
-        email: siteConfig.author.email,
         url: siteConfig.url,
         sameAs: [
           siteConfig.links.github,
@@ -89,8 +88,10 @@ export function StructuredData({
       headline: title || siteConfig.name,
       description: description || siteConfig.description,
       image: image || `${siteConfig.url}/og-image.png`,
-      datePublished: datePublished || new Date().toISOString(),
-      dateModified: dateModified || datePublished || new Date().toISOString(),
+      ...(datePublished && { datePublished }),
+      ...((dateModified || datePublished) && {
+        dateModified: dateModified || datePublished,
+      }),
       author: {
         '@type': 'Person',
         name: author || siteConfig.author.name,

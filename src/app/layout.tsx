@@ -87,9 +87,13 @@ export const metadata: Metadata = {
       "es-ES": siteConfig.url,
     },
   },
-  verification: {
-    google: "google-site-verification-code", // Replace with actual verification code
-  },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? {
+        verification: {
+          google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({

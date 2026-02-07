@@ -73,13 +73,13 @@ export function Navigation() {
           {/* Center Island: Navigation Links - Elongated pill (centered) */}
           <div className="hidden md:flex items-center gap-1 px-4 py-2.5 bg-background/60 backdrop-blur-xl rounded-[20px] border border-white/10 shadow-lg shadow-black/5">
             <NavLink sectionId="about">{t.nav.about}</NavLink>
-            <span className="text-muted-foreground/30 mx-1">•</span>
+            <span className="text-muted-foreground/30 mx-1" aria-hidden="true">•</span>
             <NavLink sectionId="experience">{t.nav.experience}</NavLink>
-            <span className="text-muted-foreground/30 mx-1">•</span>
+            <span className="text-muted-foreground/30 mx-1" aria-hidden="true">•</span>
             <NavLink sectionId="skills">{t.nav.skills}</NavLink>
             {/* <span className="text-muted-foreground/30 mx-1">•</span> */}
             {/* <NavLink sectionId="blog">{t.nav.blog}</NavLink> */}
-            <span className="text-muted-foreground/30 mx-1">•</span>
+            <span className="text-muted-foreground/30 mx-1" aria-hidden="true">•</span>
             <NavLink sectionId="contact">{t.nav.contact}</NavLink>
           </div>
 
