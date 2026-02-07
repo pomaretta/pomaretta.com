@@ -65,3 +65,9 @@ export interface BlogPost {
 export interface BlogPostDetail extends BlogPost {
   content: string
 }
+
+// Re-export authentication types
+export * from './auth'
+
+// Re-export game types
+export * from './game'

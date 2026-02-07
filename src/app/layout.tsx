@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { SessionProvider } from "@/components/providers/SessionProvider";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
+import { AuthProvider } from "@/lib/auth/AuthContext";
 import { siteConfig } from "@/config/site";
 import { StructuredData } from "@/components/StructuredData";
 
@@ -110,9 +112,13 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <LanguageProvider>
-            {children}
-          </LanguageProvider>
+          <SessionProvider>
+            <LanguageProvider>
+              <AuthProvider>
+                {children}
+              </AuthProvider>
+            </LanguageProvider>
+          </SessionProvider>
         </ThemeProvider>
       </body>
     </html>

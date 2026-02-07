@@ -12,18 +12,24 @@
   "dependencies": {
     "@notionhq/client": "^5.9.0",
     "@radix-ui/react-slot": "^1.2.4",
+    "@vercel/blob": "^2.1.0",
+    "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.31.0",
     "lucide-react": "^0.563.0",
     "next": "^15.1.6",
+    "next-auth": "^4.24.13",
     "next-intl": "^4.8.2",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "uuid": "^13.0.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.9",
     "@types/react-dom": "^19.0.4",

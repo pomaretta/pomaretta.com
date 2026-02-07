@@ -6,6 +6,7 @@ import { Moon, Sun } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { UserMenu } from '@/components/auth/UserMenu'
 
 export function Navigation() {
   const { locale, setLocale, t } = useLanguage()
@@ -53,8 +54,8 @@ export function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 pt-4 pb-4">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
-          {/* Left Island: Theme Toggle - Circular */}
-          <div className="flex justify-start">
+          {/* Left Island: Theme Toggle & User Menu */}
+          <div className="flex justify-start items-center gap-3">
             {mounted && (
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -68,6 +69,7 @@ export function Navigation() {
                 )}
               </button>
             )}
+            {mounted && <UserMenu />}
           </div>
 
           {/* Center Island: Navigation Links - Elongated pill (centered) */}
