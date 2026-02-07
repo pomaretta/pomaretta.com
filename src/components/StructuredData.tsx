@@ -18,15 +18,15 @@ type StructuredDataProps =
       author?: string
     }
 
-export function StructuredData(props: StructuredDataProps) {
+// Utility function to generate structured data object
+export function generateStructuredData(props: StructuredDataProps) {
   const { type = 'website' } = props
   const baseData = {
     '@context': 'https://schema.org',
   }
 
-  const structuredData = (() => {
-    if (type === 'website') {
-      return {
+  if (type === 'website') {
+    return {
       ...baseData,
       '@type': 'WebSite',
       name: siteConfig.name,
@@ -112,7 +112,10 @@ export function StructuredData(props: StructuredDataProps) {
   } else {
     return null
   }
-})()
+}
+
+export function StructuredData(props: StructuredDataProps) {
+  const structuredData = generateStructuredData(props)
 
   if (!structuredData) {
     return null

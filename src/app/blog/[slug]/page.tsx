@@ -8,7 +8,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import type { Metadata } from 'next'
-import { StructuredData } from '@/components/StructuredData'
+import { generateStructuredData } from '@/components/StructuredData'
+import Script from 'next/script'
 
 interface PageProps {
   params: Promise<{
@@ -59,17 +60,32 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound()
   }
 
+  // Generate structured data for the article
+  const structuredData = generateStructuredData({
+    type: 'article',
+    title: post.title,
+    description: post.summary,
+    image: post.cover,
+    datePublished: post.published,
+    dateModified: post.published,
+  })
+
+  // Escape dangerous characters to prevent script injection
+  const jsonLd = JSON.stringify(structuredData)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <StructuredData
-        type="article"
-        title={post.title}
-        description={post.summary}
-        image={post.cover}
-        datePublished={post.published}
-        dateModified={post.published}
+    <>
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: jsonLd }}
       />
-      <Navigation />
+      <div className="flex flex-col min-h-screen">
+        <Navigation />
       <main className="flex-1 pt-24 py-20 px-4">
         <article className="container max-w-4xl mx-auto">
           <Button variant="ghost" asChild className="mb-8 hover:bg-white/10">
@@ -154,5 +170,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         </article>
       </main>
     </div>
+    </>
   )
 }
