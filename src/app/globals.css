@@ -74,21 +74,37 @@
     @apply bg-background text-foreground;
   }
 
-  /* Dark mode gradients */
+  /* Dark mode - modern mesh gradient with vibrant accents */
   .dark body {
     background:
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.15), transparent),
-      radial-gradient(ellipse 60% 80% at 10% 80%, rgba(76, 0, 255, 0.1), transparent),
-      radial-gradient(ellipse 60% 80% at 90% 60%, rgba(139, 92, 246, 0.08), transparent),
+      radial-gradient(ellipse 80% 80% at 90% 20%, rgba(88, 28, 135, 0.25), transparent),
+      radial-gradient(ellipse 60% 70% at 10% 85%, rgba(59, 130, 246, 0.2), transparent),
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(37, 99, 235, 0.15), transparent),
+      radial-gradient(ellipse 100% 100% at 20% 30%, rgba(147, 51, 234, 0.15), transparent),
       #000000;
   }
 
-  /* Light mode gradients */
+  /* Enable fixed background only on larger screens (desktop) */
+  @media (min-width: 1024px) {
+    .dark body {
+      background-attachment: fixed;
+    }
+  }
+
+  /* Light mode - modern gradient with soft pastels */
   .light body {
     background:
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.08), transparent),
-      radial-gradient(ellipse 60% 80% at 10% 80%, rgba(76, 0, 255, 0.05), transparent),
-      radial-gradient(ellipse 60% 80% at 90% 60%, rgba(139, 92, 246, 0.04), transparent),
-      #ffffff;
+      radial-gradient(ellipse 80% 80% at 90% 20%, rgba(196, 181, 253, 0.3), transparent),
+      radial-gradient(ellipse 60% 70% at 10% 85%, rgba(147, 197, 253, 0.25), transparent),
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(191, 219, 254, 0.2), transparent),
+      radial-gradient(ellipse 100% 100% at 20% 30%, rgba(233, 213, 255, 0.25), transparent),
+      linear-gradient(135deg, #fefefe 0%, #f8fafc 50%, #f1f5f9 100%);
+  }
+
+  /* Enable fixed background only on larger screens (desktop) */
+  @media (min-width: 1024px) {
+    .light body {
+      background-attachment: fixed;
+    }
   }
 }

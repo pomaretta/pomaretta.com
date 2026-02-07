@@ -1,12 +1,14 @@
 'use client'
 
+import { useMemo } from 'react'
 import { FadeInUp } from '@/components/animations/FadeInUp'
-import { experiencesDetailed } from '@/data/experience-detailed'
+import { getLocalizedExperiences } from '@/data/experience-detailed'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { Briefcase } from 'lucide-react'
 
 export function ExperienceNew() {
   const { t, locale } = useLanguage()
+  const experiences = useMemo(() => getLocalizedExperiences(locale), [locale])
 
   const formatDate = (dateStr: string) => {
     const [year, month] = dateStr.split('-')
@@ -25,7 +27,7 @@ export function ExperienceNew() {
         </FadeInUp>
 
         <div className="space-y-10">
-          {experiencesDetailed.map((exp, idx) => (
+          {experiences.map((exp, idx) => (
             <FadeInUp key={exp.id} delay={0.3 + idx * 0.1}>
               <article className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-all duration-300 shadow-lg shadow-black/10">
                 <div className="flex items-start gap-3 mb-4">
