@@ -1,24 +1,25 @@
 import { siteConfig } from '@/config/site'
 
-interface StructuredDataProps {
-  type?: 'website' | 'person' | 'article'
-  title?: string
-  description?: string
-  image?: string
-  datePublished?: string
-  dateModified?: string
-  author?: string
-}
+type StructuredDataProps = 
+  | {
+      type?: 'website'
+    }
+  | {
+      type: 'person'
+      image?: string
+    }
+  | {
+      type: 'article'
+      title?: string
+      description?: string
+      image?: string
+      datePublished?: string
+      dateModified?: string
+      author?: string
+    }
 
-export function StructuredData({
-  type = 'website',
-  title,
-  description,
-  image,
-  datePublished,
-  dateModified,
-  author,
-}: StructuredDataProps) {
+export function StructuredData(props: StructuredDataProps) {
+  const { type = 'website' } = props
   const baseData = {
     '@context': 'https://schema.org',
   }
@@ -49,6 +50,7 @@ export function StructuredData({
       inLanguage: ['en-US', 'es-ES'],
     }
   } else if (type === 'person') {
+    const { image } = props as Extract<StructuredDataProps, { type: 'person' }>
     return {
       ...baseData,
       '@type': 'Person',
@@ -80,6 +82,8 @@ export function StructuredData({
       ],
     }
   } else if (type === 'article') {
+    const { title, description, image, datePublished, dateModified, author } = 
+      props as Extract<StructuredDataProps, { type: 'article' }>
     return {
       ...baseData,
       '@type': 'BlogPosting',
