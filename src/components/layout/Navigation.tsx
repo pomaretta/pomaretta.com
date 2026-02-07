@@ -42,7 +42,7 @@ export function Navigation() {
     return (
       <Link
         href={`/#${sectionId}`}
-        className="text-sm text-muted-foreground hover:text-foreground transition-all whitespace-nowrap px-2 py-1 rounded-lg hover:bg-white/5"
+        className="text-sm text-muted-foreground hover:text-foreground transition-all whitespace-nowrap px-2 py-1 rounded-lg hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         {children}
       </Link>
