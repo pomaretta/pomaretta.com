@@ -37,7 +37,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          # Mock env vars for build (won't fetch real Notion data)
+          # Mock env vars for build (file-based blog system)
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY || 'mock_key_for_build' }}
           NOTION_BLOG_DATABASE_ID: ${{ secrets.NOTION_BLOG_DATABASE_ID || 'mock_db_id' }}
           NEXT_PUBLIC_SITE_URL: 'https://www.pomaretta.com'

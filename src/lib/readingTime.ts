@@ -2,12 +2,15 @@
 // Average reading speed: 200-250 words per minute
 // We'll use 225 as a middle ground
 
+import { countWordsInMarkdown, extractTextFromMarkdown } from './blog/parser'
+
 interface NotionBlock {
   type: string
   [key: string]: any
 }
 
-export function calculateReadingTime(blocks: NotionBlock[]): number {
+// Legacy function for Notion blocks (keeping for backwards compatibility)
+export function calculateReadingTimeFromBlocks(blocks: NotionBlock[]): number {
   const WORDS_PER_MINUTE = 225
 
   let totalWords = 0
@@ -53,6 +56,32 @@ export function calculateReadingTime(blocks: NotionBlock[]): number {
   // Calculate minutes (round up to nearest minute, minimum 1)
   const minutes = Math.ceil(totalWords / WORDS_PER_MINUTE)
   return Math.max(1, minutes)
+}
+
+// Main function for calculating reading time from markdown content
+export function calculateReadingTime(content: string | NotionBlock[]): number {
+  const WORDS_PER_MINUTE = 225
+
+  // Handle both string (markdown) and array (Notion blocks) input
+  if (typeof content === 'string') {
+    const wordCount = countWordsInMarkdown(content)
+    
+    // Give code blocks extra weight (they take longer to read)
+    const codeBlockMatches = content.match(/```[\s\S]*?```/g) || []
+    const codeWords = codeBlockMatches.reduce((total, block) => {
+      const codeContent = block.replace(/```/g, '').trim()
+      return total + codeContent.split(/\s+/).length
+    }, 0)
+    
+    // Regular content + 50% extra time for code blocks
+    const totalWords = wordCount - codeWords + Math.ceil(codeWords * 1.5)
+    
+    const minutes = Math.ceil(totalWords / WORDS_PER_MINUTE)
+    return Math.max(1, minutes)
+  } else {
+    // Legacy Notion blocks support
+    return calculateReadingTimeFromBlocks(content)
+  }
 }
 
 // Simpler version that works with plain text

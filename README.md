@@ -1,6 +1,6 @@
 # Carlos Pomares Portfolio
 
-Modern portfolio website built with Next.js 15, TypeScript, Tailwind CSS, and Notion integration.
+Modern portfolio website built with Next.js 15, TypeScript, Tailwind CSS, and file-based blog system.
 
 ## ✨ Features
 
@@ -9,7 +9,7 @@ Modern portfolio website built with Next.js 15, TypeScript, Tailwind CSS, and No
 - 🎨 **Tailwind CSS** for styling
 - 🌓 **Dark mode** with next-themes
 - ✨ **Framer Motion** animations
-- 📚 **Notion API** integration for blog posts
+- **Markdown** blog posts (GitHub Pages style)
 - 📱 **Fully responsive** design
 - ♿ **Accessible** components
 - 🚀 **Optimized** for performance
@@ -26,35 +26,32 @@ npm install
 
 ### 2. Environment Setup
 
-Copy `.env.example` to `.env.local` and configure:
+Copy `.env.example` to `.env.local`:
 
 ```bash
 cp .env.example .env.local
 ```
 
-Fill in your Notion credentials:
+### 3. Add Blog Posts
 
-```env
-NOTION_API_KEY=your_notion_integration_token
-NOTION_BLOG_DATABASE_ID=your_notion_database_id
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_SITE_NAME=Carlos Pomares
+Create markdown files in the `/blog` directory with this format:
+
+```markdown
+---
+title: "Your Post Title"
+date: "2024-02-07"
+summary: "Brief description"
+tags: ["tag1", "tag2"]
+author: "Your Name"
+published: true
+---
+
+# Your Content
+
+Your markdown content goes here...
 ```
 
-### 3. Notion Database Setup
-
-1. Create a database in Notion called "Blog Posts"
-2. Add these properties:
-   - **Title** (Title)
-   - **Slug** (Text) - URL-friendly identifier
-   - **Summary** (Text) - Short description
-   - **Published** (Date)
-   - **Status** (Select: Draft, Published)
-   - **Tags** (Multi-select)
-   - **Cover** (Files & Media)
-3. Create an integration at [notion.so/my-integrations](https://notion.so/my-integrations)
-4. Share your database with the integration
-5. Copy the integration token and database ID to `.env.local`
+Filename format: `YYYY-MM-DD-slug.md` (e.g., `2024-02-07-my-first-post.md`)
 
 ### 4. Run Development Server
 
@@ -87,12 +84,38 @@ src/
 │   ├── ui/            # Reusable UI components
 │   └── providers/      # Theme provider
 ├── lib/
-│   ├── notion/         # Notion API integration
+│   ├── blog/           # File-based blog utilities
 │   └── utils.ts        # Utility functions
 ├── types/              # TypeScript definitions
 ├── data/              # Static data (projects, skills)
 └── config/            # Site configuration
 ```
+
+## 🤖 AI Assistant Documentation
+
+This project includes comprehensive documentation for AI assistants and development tools:
+
+### For GitHub Copilot
+**[.copilot-instructions.md](.copilot-instructions.md)**  
+Provides code patterns, conventions, and best practices specifically for GitHub Copilot. Includes:
+- Component architecture patterns
+- TypeScript and styling conventions  
+- Development workflow guidelines
+- Common code examples and templates
+
+### For Any AI Agent
+**[AGENTS.md](AGENTS.md)**  
+Comprehensive guide for all AI assistants working with this repository. Contains:
+- Complete project architecture overview
+- Development guidelines and best practices
+- Troubleshooting and testing procedures
+- Performance and security considerations
+
+### Migration Information
+**[AI_MIGRATION.md](AI_MIGRATION.md)**  
+Documents the migration from Claude-specific to universal AI documentation formats.
+
+These files ensure optimal collaboration between developers and AI tools while maintaining code quality and consistency.
 
 ## 🎨 Customization
 

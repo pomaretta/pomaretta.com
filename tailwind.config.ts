@@ -41,8 +41,74 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            h1: {
+              fontWeight: '700',
+            },
+            h2: {
+              fontWeight: '600',
+            },
+            h3: {
+              fontWeight: '600',
+            },
+            code: {
+              backgroundColor: 'hsl(var(--muted))',
+              padding: '0.2em 0.4em',
+              borderRadius: '0.25rem',
+              fontWeight: '500',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+            pre: {
+              backgroundColor: 'hsl(var(--muted))',
+              border: '1px solid hsl(var(--border))',
+            },
+            'pre code': {
+              backgroundColor: 'transparent',
+              padding: '0',
+            },
+            blockquote: {
+              borderLeftColor: 'hsl(var(--primary))',
+              backgroundColor: 'hsl(var(--muted) / 0.3)',
+              padding: '1rem 1.5rem',
+              borderRadius: '0.5rem',
+            },
+            'blockquote p:first-of-type::before': {
+              content: '""',
+            },
+            'blockquote p:last-of-type::after': {
+              content: '""',
+            },
+            table: {
+              backgroundColor: 'hsl(var(--card))',
+              border: '1px solid hsl(var(--border))',
+            },
+            'thead th': {
+              backgroundColor: 'hsl(var(--muted))',
+              borderBottom: '1px solid hsl(var(--border))',
+            },
+            'tbody tr': {
+              borderBottom: '1px solid hsl(var(--border))',
+            },
+            'tbody tr:last-child': {
+              borderBottom: 'none',
+            },
+            img: {
+              borderRadius: '0.5rem',
+              border: '1px solid hsl(var(--border))',
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
 export default config;

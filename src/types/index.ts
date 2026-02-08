@@ -49,19 +49,24 @@ export interface Education {
   description?: string
 }
 
-// Notion blog post types
+// Blog post types
 export interface BlogPost {
   id: string
-  title: string
+  title: string | { en: string; es: string }
   slug: string
-  summary: string
+  summary: string | { en: string; es: string }
   published: string
   tags: string[]
   cover?: string
   featured?: boolean
-  readingTime?: number // Reading time in minutes
+  readingTime?: number | { en: number; es: number }
+  isPublished?: boolean // For internal filtering
+  aiAssisted?: boolean // AI assistance indicator
 }
 
-export interface BlogPostDetail extends BlogPost {
-  content: string
+export interface BlogPostDetail extends Omit<BlogPost, 'title' | 'summary' | 'readingTime'> {
+  title: string | { en: string; es: string }
+  summary: string | { en: string; es: string }
+  readingTime?: number | { en: number; es: number }
+  content: string | { en: string; es: string }
 }

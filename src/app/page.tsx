@@ -4,7 +4,7 @@ import { WhatIBuild } from '@/components/sections/WhatIBuild'
 import { ExperienceNew } from '@/components/sections/ExperienceNew'
 import { TechStackNew } from '@/components/sections/TechStackNew'
 import { BeyondCode } from '@/components/sections/BeyondCode'
-// import { BlogPreview } from '@/components/sections/BlogPreview' // Temporarily disabled
+import { BlogPreview } from '@/components/sections/BlogPreview'
 import { GitHubActivity } from '@/components/sections/GitHubActivity'
 import { CodeRunnerGame } from '@/components/sections/CodeRunnerGame'
 import { ContactNew } from '@/components/sections/ContactNew'
@@ -19,7 +19,7 @@ export default function Home() {
         <ExperienceNew />
         <TechStackNew />
         <BeyondCode />
-        {/* <BlogPreview /> */}
+        <BlogPreview />
         <GitHubActivity />
         <CodeRunnerGame />
         <ContactNew />
