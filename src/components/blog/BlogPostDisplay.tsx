@@ -50,7 +50,7 @@ export function BlogPostDisplay({ post }: BlogPostDisplayProps) {
 
         <div className="flex flex-wrap items-center gap-2 mb-8">
           {post.aiAssisted && (
-            <Badge variant="default" className="bg-gradient-to-r from-purple-500 to-blue-500 text-white border-0 font-medium">
+            <Badge variant="default" className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-sm border border-purple-300/30 text-white font-medium">
               <Brain className="w-3 h-3 mr-1" />
               {locale === 'en' ? 'AI-Assisted' : 'Asistido por IA'}
             </Badge>

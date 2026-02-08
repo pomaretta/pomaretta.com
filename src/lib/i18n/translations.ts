@@ -90,6 +90,7 @@ export const translations = {
       backToAllPosts: 'Back to all posts',
       noPostsFound: 'No blog posts yet. Check back soon!',
       addPostsHelp: 'Add markdown files to the /blog directory to see posts',
+      newBadge: 'New',
     },
     github: {
       title: 'GitHub Activity',
@@ -197,6 +198,7 @@ export const translations = {
       backToAllPosts: 'Volver a todos los posts',
       noPostsFound: '¡Aún no hay publicaciones de blog. ¡Vuelve pronto!',
       addPostsHelp: 'Agrega archivos markdown al directorio /blog para ver publicaciones',
+      newBadge: 'Nuevo',
     },
     github: {
       title: 'Actividad en GitHub',

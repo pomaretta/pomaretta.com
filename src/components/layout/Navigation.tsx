@@ -11,6 +11,7 @@ export function Navigation() {
   const { locale, setLocale, t } = useLanguage()
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [hasRecentPosts, setHasRecentPosts] = useState(false)
   const pathname = usePathname()
 
   const isHomePage = pathname === '/'
@@ -18,6 +19,30 @@ export function Navigation() {
   // Avoid hydration mismatch
   useEffect(() => {
     setMounted(true)
+  }, [])
+
+  // Check for recent blog posts
+  useEffect(() => {
+    async function checkRecentPosts() {
+      try {
+        const response = await fetch('/api/blog')
+        const posts = await response.json()
+        
+        const thirtyDaysAgo = new Date()
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
+        
+        const recentPosts = posts.some((post: any) => 
+          new Date(post.published) > thirtyDaysAgo
+        )
+        
+        setHasRecentPosts(recentPosts)
+      } catch (error) {
+        console.error('Failed to check recent posts:', error)
+        setHasRecentPosts(false)
+      }
+    }
+
+    checkRecentPosts()
   }, [])
 
   const scrollToSection = (id: string) => {
@@ -77,9 +102,18 @@ export function Navigation() {
             <NavLink sectionId="experience">{t.nav.experience}</NavLink>
             <span className="text-muted-foreground/30 mx-1" aria-hidden="true">•</span>
             <NavLink sectionId="skills">{t.nav.skills}</NavLink>
-            {/* <span className="text-muted-foreground/30 mx-1">•</span> */}
-            {/* <NavLink sectionId="blog">{t.nav.blog}</NavLink> */}
             <span className="text-muted-foreground/30 mx-1" aria-hidden="true">•</span>
+            {hasRecentPosts ? (
+              <div className="flex items-center gap-1.5">
+                <NavLink sectionId="blog">{t.nav.blog}</NavLink>
+                <span className="inline-flex items-center justify-center w-1.5 h-1.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-pulse" title={t.blog.newBadge}></span>
+              </div>
+            ) : (
+              <>
+                <NavLink sectionId="blog">{t.nav.blog}</NavLink>
+                <span className="text-muted-foreground/30 mx-1" aria-hidden="true">•</span>
+              </>
+            )}
             <NavLink sectionId="contact">{t.nav.contact}</NavLink>
           </div>
 

@@ -83,7 +83,7 @@ export function BlogPostList({ posts }: BlogPostListProps) {
                 <p className="text-muted-foreground mb-4 line-clamp-3">{localizedSummary}</p>
                 <div className="flex flex-wrap gap-2">
                   {post.aiAssisted && (
-                    <Badge variant="default" className="bg-gradient-to-r from-purple-500 to-blue-500 text-white border-0 font-medium">
+                    <Badge variant="default" className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-sm border border-purple-300/30 text-white font-medium">
                       <Brain className="w-3 h-3 mr-1" />
                       {locale === 'en' ? 'AI-Assisted' : 'Asistido por IA'}
                     </Badge>
