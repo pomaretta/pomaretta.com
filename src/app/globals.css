@@ -108,3 +108,220 @@
     }
   }
 }
+
+/* GitHub-style code blocks */
+@layer components {
+  /* Code block wrapper */
+  .code-block-wrapper {
+    @apply relative rounded-lg border border-border bg-card/30 my-6 overflow-hidden;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  /* Code block header */
+  .code-block-header {
+    @apply flex justify-between items-center px-4 py-2.5 bg-muted/20 border-b border-border text-xs;
+  }
+
+  /* Language label */
+  .language-label {
+    @apply font-medium text-muted-foreground uppercase tracking-wide;
+  }
+
+  /* Copy button */
+  .copy-btn {
+    @apply flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-background/60 transition-all duration-200 border border-border/50 hover:border-border text-xs font-medium;
+  }
+
+  .copy-btn:hover {
+    @apply shadow-sm;
+  }
+
+  .copy-btn.copied {
+    @apply text-green-600 border-green-600/30 bg-green-600/10;
+  }
+
+  /* Code content */
+  .code-block-content {
+    @apply bg-transparent border-0 rounded-none p-4 m-0 overflow-x-auto font-mono text-sm leading-relaxed;
+  }
+
+  .code-block-content code {
+    @apply bg-transparent p-0 text-inherit;
+  }
+
+  /* Base highlighting styles */ 
+  .dark .hljs-comment,
+  .dark .hljs-quote {
+    color: #6A9955;
+    font-style: italic;
+  }
+
+  .dark .hljs-variable,
+  .dark .hljs-template-variable,
+  .dark .hljs-attribute,
+  .dark .hljs-tag,
+  .dark .hljs-name,
+  .dark .hljs-regexp,
+  .dark .hljs-link,
+  .dark .hljs-selector-id,
+  .dark .hljs-selector-class {
+    color: #9CDCFE;
+  }
+
+  .dark .hljs-number,
+  .dark .hljs-meta,
+  .dark .hljs-built_in,
+  .dark .hljs-builtin-name,
+  .dark .hljs-literal,
+  .dark .hljs-type,
+  .dark .hljs-params {
+    color: #B5CEA8;
+  }
+
+  .dark .hljs-string,
+  .dark .hljs-symbol,
+  .dark .hljs-bullet {
+    color: #CE9178;
+  }
+
+  .dark .hljs-title,
+  .dark .hljs-section {
+    color: #DCDCAA;
+    font-weight: 600;
+  }
+
+  .dark .hljs-keyword,
+  .dark .hljs-selector-tag {
+    color: #569CD6;
+    font-weight: 600;
+  }
+
+  .dark .hljs-function {
+    color: #DCDCAA;
+  }
+
+  .dark .hljs-class {
+    color: #4EC9B0;
+  }
+
+  /* Light mode syntax highlighting (based on VS Code Light+) */
+  .light .hljs-comment,
+  .light .hljs-quote {
+    color: #008000;
+    font-style: italic;
+  }
+
+  .light .hljs-variable,
+  .light .hljs-template-variable,
+  .light .hljs-attribute,
+  .light .hljs-tag,
+  .light .hljs-name,
+  .light .hljs-regexp,
+  .light .hljs-link,
+  .light .hljs-selector-id,
+  .light .hljs-selector-class {
+    color: #001080;
+  }
+
+  .light .hljs-number,
+  .light .hljs-meta,
+  .light .hljs-built_in,
+  .light .hljs-builtin-name,
+  .light .hljs-literal,
+  .light .hljs-type,
+  .light .hljs-params {
+    color: #09885A;
+  }
+
+  .light .hljs-string,
+  .light .hljs-symbol,
+  .light .hljs-bullet {
+    color: #A31515;
+  }
+
+  .light .hljs-title,
+  .light .hljs-section {
+    color: #795E26;
+    font-weight: 600;
+  }
+
+  .light .hljs-keyword,
+  .light .hljs-selector-tag {
+    color: #0000FF;
+    font-weight: 600;
+  }
+
+  .light .hljs-function {
+    color: #795E26;
+  }
+
+  .light .hljs-class {
+    color: #267F99;
+  }
+
+  /* Enhanced code block styling */
+  .code-block-container {
+    @apply relative overflow-hidden rounded-lg border border-border bg-card/30;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .code-header {
+    @apply flex justify-between items-center px-4 py-2 bg-muted/20 border-b border-border;
+  }
+
+  .language-label {
+    @apply text-xs font-medium text-muted-foreground uppercase tracking-wide;
+  }
+
+  .copy-button {
+    @apply text-xs px-3 py-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-background/50 transition-all duration-200 cursor-pointer border border-border/50 hover:border-border font-medium;
+  }
+
+  .copy-button:hover {
+    @apply bg-background/80;
+  }
+
+  .copy-button.copied {
+    @apply text-green-500 border-green-500/50 bg-green-500/10;
+  }
+
+  pre.hljs-pre {
+    @apply bg-transparent border-0 rounded-none p-4 my-0 overflow-x-auto;
+    margin: 0;
+  }
+
+  pre.hljs {
+    @apply bg-card/50 border border-border rounded-lg p-4 my-6 overflow-x-auto;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  /* Inline code styling */
+  :not(pre) > code {
+    @apply bg-muted text-foreground px-2 py-1 rounded text-sm font-mono;
+    border: 1px solid hsl(var(--border));
+  }
+
+  /* Language label for code blocks */
+  .hljs-language-label {
+    @apply absolute top-2 right-2 text-xs text-muted-foreground bg-background/80 px-2 py-1 rounded opacity-70;
+    text-transform: capitalize;
+  }
+
+  /* Scrollbar styling for code blocks */
+  .hljs::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .hljs::-webkit-scrollbar-track {
+    @apply bg-background/20 rounded;
+  }
+
+  .hljs::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded;
+  }
+
+  .hljs::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}

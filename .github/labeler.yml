@@ -26,7 +26,7 @@ blog:
   - changed-files:
     - any-glob-to-any-file:
       - 'src/app/blog/**/*'
-      - 'src/lib/notion/**/*'
+      - 'src/lib/blog/**/*'
 
 styling:
   - changed-files:

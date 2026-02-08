@@ -86,6 +86,10 @@ export const translations = {
       title: 'Latest Thoughts',
       readMore: 'Read More',
       viewAll: 'View All Posts',
+      backToBlog: 'Back to Blog',
+      backToAllPosts: 'Back to all posts',
+      noPostsFound: 'No blog posts yet. Check back soon!',
+      addPostsHelp: 'Add markdown files to the /blog directory to see posts',
     },
     github: {
       title: 'GitHub Activity',
@@ -189,6 +193,10 @@ export const translations = {
       title: 'Últimas Reflexiones',
       readMore: 'Leer Más',
       viewAll: 'Ver Todos los Posts',
+      backToBlog: 'Volver al Blog',
+      backToAllPosts: 'Volver a todos los posts',
+      noPostsFound: '¡Aún no hay publicaciones de blog. ¡Vuelve pronto!',
+      addPostsHelp: 'Agrega archivos markdown al directorio /blog para ver publicaciones',
     },
     github: {
       title: 'Actividad en GitHub',

@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'www.notion.so',
+        hostname: 'picsum.photos',
         port: '',
         pathname: '/**',
       },

@@ -160,9 +160,28 @@ npm run dev
 ## 📝 Documentation
 
 - Update `README.md` if you add new features
-- Update `CLAUDE.md` for architectural changes
+- Update AI documentation for architectural changes:
+  - **`.copilot-instructions.md`**: Code patterns and conventions for GitHub Copilot
+  - **`AGENTS.md`**: Complete project context for AI assistants
 - Add JSDoc comments for public APIs
 - Include inline comments for complex logic
+
+## 🤖 AI-Assisted Development
+
+This project includes comprehensive documentation for AI assistants:
+
+### For Developers Using AI Tools
+
+- **GitHub Copilot**: The [.copilot-instructions.md](.copilot-instructions.md) file provides code patterns, conventions, and best practices for optimal Copilot suggestions
+- **Any AI Assistant**: The [AGENTS.md](AGENTS.md) file contains complete project context and development guidelines
+- **Migration Information**: See [AI_MIGRATION.md](AI_MIGRATION.md) for details on the documentation migration
+
+### When Contributing AI-Related Changes
+
+- Update both files if changes affect code patterns AND project understanding
+- Test AI suggestions with your changes to ensure they remain helpful
+- Keep code examples current and reflect actual project patterns
+- Maintain consistency between the documentation files
 
 ## 🐛 Reporting Issues
 
@@ -188,7 +207,7 @@ If you have questions or need help:
 
 - Open a [GitHub Discussion](https://github.com/pomaretta/pomaretta.com/discussions)
 - Check existing [Issues](https://github.com/pomaretta/pomaretta.com/issues)
-- Review the [README.md](README.md) and [CLAUDE.md](CLAUDE.md)
+- Review the [README.md](README.md), [AGENTS.md](AGENTS.md), and [.copilot-instructions.md](.copilot-instructions.md)
 
 ## 📄 License
 
